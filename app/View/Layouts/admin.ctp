@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <legend>
-                        <?php echo $this->fetch('title'); ?>
+                        <?php if(!empty($title_for_layout)){echo $title_for_layout;}; ?>
                     </legend>
                     <div class="clearfix"></div>
                     <?php
@@ -67,7 +67,7 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <strong>Copyright © 2017 <a href="customers#">TaxiGo</a>.</strong> All rights reserved.
+        <strong>Copyright © 2017 <a href="taxigo.vn">TaxiGo</a>.</strong> All rights reserved.
     </footer>
 </div>
 <!-- ./wrapper -->

@@ -2,13 +2,26 @@
 App::uses('AppController', 'Controller');
 class UsersController extends AppController {
     public $uses = array('User');
-    public function addUser(){
-
+    var $components = array('Session', 'Cookie', 'Auth');
+    public function add(){
+        $this->layout = 'admin';
+        $this->set('title_for_layout', 'Thêm tài khoản');
+        if ($this->request->is('post')) {
+            $this->User->create();
+            if(trim($this->request->data['User']['email']) == ''){
+                $this->Session->setFlash(__('Email không thể trống!'), 'flashmessage', array('type' => 'error'), 'error');
+            }else{
+                if ($this->User->save($this->request->data)) {
+                    $this->Session->setFlash(__('Lưu dữ liệu thành công !'), 'flashmessage', array('type' => 'success'), 'success');
+                    return $this->redirect(array('action' => 'add'));
+                } else {
+                    $this->Session->setFlash(__('Lưu dữ liệu thất bại !'), 'flashmessage', array('type' => 'error'), 'error');
+                }
+            }
+        }
     }
     public function login() {
         $this->layout = 'admin_login';
-        $this->set('title_for_layout', 'Air Profits Hotel');
-
         if ($this->request->is('post')) {
             $year =  time() + 86400;
             if(!empty($_POST['data']['User']['remember'])) {

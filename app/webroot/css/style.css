@@ -1,6 +1,6 @@
 @font-face {
     font-family: hirakakupro;
-    src:url(../fonts/hirakakupro-w3-opentype.otf);
+    src:url("../fonts/hirakakupro-w3-opentype.otf");
 }
 
 .panel-default>.panel-heading {

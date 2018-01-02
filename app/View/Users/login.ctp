@@ -5,7 +5,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">VUI LÒNG ĐĂNG NHẬP</p>
         <?php echo $this->Session->flash("error"); ?>
-        <form action="/login" id="UserAdminLoginForm" method="post" accept-charset="utf-8">
+        <form action="/users/login" id="UserAdminLoginForm" method="post" accept-charset="utf-8">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" name="data[User][email]" id="UserEmail"
                        placeholder="Nhập tài khoản" value="<?php echo isset($_COOKIE['usr']) ? $_COOKIE['usr'] : ''; ?>">
