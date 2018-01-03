@@ -1,58 +1,7 @@
 <?php
-/**
- * Application level Controller
- *
- * This file is application-wide controller file. You can put all
- * application-wide controller-related methods here.
- *
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
- * @license       https://opensource.org/licenses/mit-license.php MIT License
- */
-
 App::uses('Controller', 'Controller');
 
-/**
- * Application Controller
- *
- * Add your application-wide methods in the class below, your controllers
- * will inherit them.
- *
- * @package		app.Controller
- * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
- */
 class AppController extends Controller {
     public $components = array('DebugKit.Toolbar');
-//   var $components = array('Session', 'Cookie', 'Auth', 'RequestHandler', 'Paginator', 'Export.Export', 'Acl', 'Curl');
-    public function beforeFilter() {
-//        $this->__configAuth();
-    }
-    private function __configAuth(){
-//        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'admin_login');
-//        $this->Auth->loginRedirect = array('controller' => 'dashboard', 'action' => 'index');
-//        $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'admin_login');
-        $this->Auth->authenticate = array(
-            'Form' => array(
-                'passwordHasher' => 'Blowfish',
-                'fields' => array(
-                    'username' => 'email'
-                )
-            ),
-        );
-        $this->Auth->authorize = array(
-            'Actions' => array('actionPath' => 'controllers', 'userModel' => 'User')
-        );
-
-        $this->Auth->unauthorizedRedirect = false;
-    }
 
 }

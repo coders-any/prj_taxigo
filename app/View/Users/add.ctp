@@ -12,13 +12,13 @@
             </div>
             <div class="clearfix"></div>
             <div class="form-group col-md-4">
-                <label>Email(*)</label>
+                <label>Email</label>
                 <div class="input text required"><input name="data[User][email]" class="form-control" type="email" id="UserEmail" required="required"></div>
             </div>
             <div class="clearfix"></div>
 
             <div class="form-group col-md-4">
-                <label>Mật khẩu(*)</label>
+                <label>Mật khẩu</label>
                 <div class="input password required"><input name="data[User][password]" class="form-control" type="password" id="UserPassword" required="required"></div>
             </div>
             <div class="clearfix"></div>

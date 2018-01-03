@@ -11,6 +11,7 @@ class UsersController extends AppController {
             if(trim($this->request->data['User']['email']) == ''){
                 $this->Session->setFlash(__('Email không thể trống!'), 'flashmessage', array('type' => 'error'), 'error');
             }else{
+                $this->request->data['User']['password'] = md5($this->request->data['User']['password']);
                 if ($this->User->save($this->request->data)) {
                     $this->Session->setFlash(__('Lưu dữ liệu thành công !'), 'flashmessage', array('type' => 'success'), 'success');
                     return $this->redirect(array('action' => 'add'));
@@ -38,13 +39,19 @@ class UsersController extends AppController {
             }
 
             if ($this->Auth->login()) {
-                $user = $this->Auth->user();
-                $id = $this->User->find('first',['conditions' => ['User.id' => $user['id']]]);
-                CakeSession::write('Auth.User.user_id', $id['User']['id']);
-                return $this->redirect($this->Auth->redirectUrl($this->Auth->loginRedirect));
+                $data  = $this->User->find('first',array('conditions' => array(
+                    'User.email' => $this->request->data['User']['email'],
+                    'User.password' => md5($this->request->data['User']['password']),
+                )));
+                if(!empty($data)){
+                    CakeSession::write('Auth.User.user_id', $data['User']['id']);
+                    return $this->redirect('/Dashboards/index');
+                }else{
+                    $this->Session->setFlash(__('Đăng nhập thất bại'), 'flashmessage', array('type' => 'error'), 'error');
+                }
+
             }
 
-            $this->Session->setFlash(__('Đăng nhập thất bại'), 'flashmessage', array('type' => 'error'), 'error');
         }
     }
 }
