@@ -31,6 +31,26 @@
     <?php echo $this->Html->css('style.css?ver=1.9'); ?>
     <?php echo $this->fetch('css'); ?>
     <?php echo $this->Html->script('jquery.min'); ?>
+    <!-- Bootstrap 3.3.2 JS -->
+    <?php echo $this->Html->script('bootstrap.min'); ?>
+    <!-- Underscore -->
+    <?php echo $this->Html->script('underscore-min'); ?>
+    <!-- SlimScroll -->
+    <?php echo $this->Html->script('jquery.slimscroll.min'); ?>
+    <!-- FastClick -->
+    <?php echo $this->Html->script('fastclick.min'); ?>
+    <!-- AdminLTE App -->
+    <?php echo $this->Html->script('app.min'); ?>
+    <?php echo $this->Html->script('amain'); ?>
+    <?php echo $this->Html->script('jquery.tokeninput'); ?>
+    <?php echo $this->Html->script('sweetalert'); ?>
+    <!-- <?php //echo $this->Html->script('fullcalendar'); ?> -->
+    <?php echo $this->fetch('script'); ?>
+    <?php echo $this->fetch('modal'); ?>
+
+    <?php echo $this->Html->script('jquery.min'); ?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAppU1Jvn8zFhIl3RBSA0uNHXfZwkKb8Gc&v=3.exp&sensor=false&libraries=places"></script>
+    <?php echo $this->Html->script('jquery.placepicker'); ?>
 
 </head>
 <body class="skin-blue" cz-shortcut-listen="true">
@@ -74,22 +94,6 @@
 <!--  -->
 <!-- jQuery 2.1.3 -->
 <!-- Bootstrap 3.3.2 JS -->
-<?php echo $this->Html->script('jquery.min'); ?>
-<!-- Bootstrap 3.3.2 JS -->
-<?php echo $this->Html->script('bootstrap.min'); ?>
-<!-- Underscore -->
-<?php echo $this->Html->script('underscore-min'); ?>
-<!-- SlimScroll -->
-<?php echo $this->Html->script('jquery.slimscroll.min'); ?>
-<!-- FastClick -->
-<?php echo $this->Html->script('fastclick.min'); ?>
-<!-- AdminLTE App -->
-<?php echo $this->Html->script('app.min'); ?>
-<?php echo $this->Html->script('amain'); ?>
-<?php echo $this->Html->script('jquery.tokeninput'); ?>
-<?php echo $this->Html->script('sweetalert'); ?>
-<!-- <?php //echo $this->Html->script('fullcalendar'); ?> -->
-<?php echo $this->fetch('script'); ?>
-<?php echo $this->fetch('modal'); ?>
+
 </body>
 </html>

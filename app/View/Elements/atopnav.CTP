@@ -16,20 +16,20 @@
                 <li class="dropdown user user-menu">
                     <a href="customers#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-user"></i>
-                        <span>User Profits <i class="caret"></i></span>
+                        <span>User<i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <p>User Profits                        </p>
+                            <p>TaxiGo</p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a class="btn btn-default btn-flat" title="Change passwork" href="users/change_password">プロフィール変更</a>
+                                <a class="btn btn-default btn-flat" title="Change passwork" href="users/add/">Tài khoản</a>
                             </div>
                             <div class="pull-right">
-                                <a class="btn btn-default btn-flat" href="users/admin_logout/admin:1">ログアウト</a>
+                                <a class="btn btn-default btn-flat" href="/users/logout">Thoát</a>
                             </div>
                         </li>
                     </ul>
