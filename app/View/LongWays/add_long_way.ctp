@@ -16,14 +16,14 @@
             <div class="form-group col-md-4">
                 <label>Điểm đi (*)</label>
                 <div class="input text ">
-                    <input name="place_start" class="form-control placepicker" type="text" required="required"  value="">
+                    <input name="place_start" class="form-control placepicker" type="text" required="required"  value=""> (Hồ Hoàn Kiếm, Hà Nội, Việt Nam)
                 </div>
             </div>
             <div class="clearfix"></div>
             <div class="form-group col-md-4">
                 <label>Điểm đến (*)</label>
                 <div class="input text required">
-                    <input name="place_end" class="form-control placepicker" type="text" required="required" value="">
+                    <input name="place_end" class="form-control placepicker" type="text" required="required" value=""> (UBND tỉnh Nam Định, Vị Hoàng, Nam Định, Việt Nam)
                 </div>
             </div>
             <div class="clearfix"></div>

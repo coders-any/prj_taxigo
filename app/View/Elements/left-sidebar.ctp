@@ -10,6 +10,12 @@
                 </a>
             </li>
             <li class="treeview">
+                <a href="/roadprices/add_road_price">
+                    <i class="fa fa-angle-double-right"></i>
+                    <span>Cài đặt chung</span>
+                </a>
+            </li>
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-angle-double-right"></i>
                     <span>Tài khoản</span>
@@ -31,10 +37,31 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="/roadprices/add_road_price">
+                <a href="/cartypeprices/list_car_type_price">
+                    <i class="fa fa-angle-double-right"></i>
+                    <span>Cài đặt giá theo km</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-angle-double-right"></i>
                     <span>Phí cầu đường</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/roadprices/list_road_price">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Danh sách phí</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/roadprices/add_road_price">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Thêm phí cầu đường</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="#">

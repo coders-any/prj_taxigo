@@ -22,8 +22,8 @@
                     <td style="word-break: break-all;"><?php echo @$value['User']['full_name'];?></td>
                     <td style="word-break: break-all;"><?php echo $value['User']['email'];?></td>
                     <td style="width: 29%;">
-                        <a href="/users/add/<?php echo @$value['User']['id'];?>"><span class="btn btn-primary btndf_button" style="margin-right:15px;">編集</span></a>
-                        <a href="/users/delete/<?php echo $value['User']['id'];?>" onclick="confirm('Are you sure');"><span class="btn btn-default btndf_button">削除</span></a>
+                        <a href="/users/add/<?php echo @$value['User']['id'];?>"><span class="btn btn-primary btndf_button" style="margin-right:15px;">Sửa</span></a>
+                        <a href="/users/delete/<?php echo $value['User']['id'];?>" onclick="confirm('Are you sure');"><span class="btn btn-default btndf_button">Xóa</span></a>
                     </td>
 
                 </tr>

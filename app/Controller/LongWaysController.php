@@ -63,12 +63,18 @@ class LongWaysController extends AppController
                     }else{
                         $km = 0;
                     }
+                    var_dump($km);
+                    //prices
+
+
+
+
+
 
                 }else{
                     echo "<script>alert('Nhập sai cú pháp')</script>";
                 }
-                var_dump($coord_start);
-                var_dump($coord_end);die;
+
 
 
 
