@@ -13,6 +13,7 @@ class RoadPricesController extends AppController
 
             }
         }
+        
         $this->set('listCity',$listCity);
     }
 
