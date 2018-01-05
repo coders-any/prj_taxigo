@@ -1,3 +1,4 @@
+<script language="javascript" src="/ckeditor/ckeditor.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $(".placepicker").placepicker();
@@ -23,6 +24,14 @@
             <div class="form-group col-md-4">
                 <label>Điểm đến (*)</label>
                 <div class="input text required">
+                    <input name="place_end" class="form-control placepicker" type="text" required="required" value=""> (UBND tỉnh Nam Định, Vị Hoàng, Nam Định, Việt Nam)
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Điểm đến (*)</label>
+                <div class="input text required">
+                    <textarea id="summary"></textarea>
+                    <script type="text/javascript">CKEDITOR.replace('summary'); </script>
                     <input name="place_end" class="form-control placepicker" type="text" required="required" value=""> (UBND tỉnh Nam Định, Vị Hoàng, Nam Định, Việt Nam)
                 </div>
             </div>

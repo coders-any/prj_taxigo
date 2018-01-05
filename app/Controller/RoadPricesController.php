@@ -71,11 +71,7 @@ class RoadPricesController extends AppController
         }else{
             return $this->redirect('/admin');
         }
-<<<<<<< 007a58288398fb815c911d3e20ea71c8853721d5
-        
-        $this->set('listCity',$listCity);
-=======
->>>>>>> [dev] phi-cau-duong, cai dat gia km
+
     }
 
 }
