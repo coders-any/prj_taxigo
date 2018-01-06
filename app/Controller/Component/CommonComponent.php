@@ -25,7 +25,7 @@ class CommonComponent extends Component
         curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 90);
         $response = curl_exec($ch);
         curl_close($ch);
         $response_a = json_decode($response);
@@ -37,7 +37,9 @@ class CommonComponent extends Component
         }
         else
         {
-            $return = array('lat' => $response_a->results[0]->geometry->location->lat, 'long' => $long = $response_a->results[0]->geometry->location->lng);
+            $lat = !empty($response_a->results[0]->geometry->location->lat)?$response_a->results[0]->geometry->location->lat:0;
+            $long = !empty($response_a->results[0]->geometry->location->lng)?$response_a->results[0]->geometry->location->lng:0;
+            $return = array('lat' => $lat, 'long' => $long = $long);
             return $return;
         }
 
@@ -51,7 +53,7 @@ class CommonComponent extends Component
         curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 90);
         $response = curl_exec($ch);
         curl_close($ch);
         $response_a = json_decode($response, true);
@@ -78,6 +80,8 @@ class CommonComponent extends Component
     public function listCity(){
         $data = array(
             'City'=>array(
+                '1'=>array('id'=>1,'name'=>'Hà Nội'),
+                '2'=>array('id'=>2,'name'=>'Sân bay Nội Bài'),
                 '3'=>array('id'=>3,'name'=>'Hà Nam'),
                 '4'=>array('id'=>4,'name'=>'Nam Định'),
                 '5'=>array('id'=>5,'name'=>'Ninh Bình'),
@@ -134,7 +138,7 @@ class CommonComponent extends Component
         $str = str_replace('"','',$str);
         $str = str_replace("'",'',$str);
         $str = str_replace("/",'',$str);
-        $str = stripUnicode($str);
+        $str = $this->stripUnicode($str);
         $str = mb_convert_case($str,MB_CASE_LOWER,'utf-8');
         // MB_CASE_Upper / MB_CASE_TITLE / MB_CASE_LOWER
         $str = str_replace(' ','-',$str);
@@ -157,38 +161,6 @@ class CommonComponent extends Component
             }
         }
     }
-?>
-<?php
-//Nhúng upload file
-function showUploadFile($idInput = '', $nameInput = '', $value = '', $number = '') { ?>
-    <script src="http://localhost/funnyfamily/public/include/ckfinder/ckfinder.js" ></script>
-    <script type="text/javascript">
-        function BrowseServerImg<?php echo $number; ?>() {
-            var finder = new CKFinder();
-            //finder.basePath = '../';
-            finder.selectActionFunction = SetFileFieldImg<?php echo $number; ?>;
-            finder.popup();
-        }
 
-        function SetFileFieldImg<?php echo $number; ?>(fileUrl) {
-            document.getElementById('<?php echo $idInput; ?>').value = fileUrl;
-        }
-    </script>
-    <input style="float: left;" type="text" name="<?php echo $nameInput; ?>" id='<?php echo $idInput; ?>' value="<?php echo $value; ?>" />
-    <input type="button" value="Lựa chọn" onclick="BrowseServerImg<?php echo $number; ?>();" />
-    <?php
 }
-?>
-<?php
-//Nhúng trình soạn thảo
-function showEditorInput($idEditor = '', $nameEditor = '', $content = '') { ?>
-    <script language="javascript" src="http://localhost/funnyfamily/public/include/ckeditor/ckeditor.js" type="text/javascript"></script>
-    <textarea style="border: 1px solid #abadb3;height: auto;" class="form-control"  id="<?php echo $idEditor; ?>" name="<?php echo $nameEditor; ?>" ><?php echo $content; ?></textarea>
-    <script type="text/javascript">CKEDITOR.replace('<?php echo $idEditor; ?>');</script>
-    <?php
-}
-?>
-
-<?php 
-} 
 ?>

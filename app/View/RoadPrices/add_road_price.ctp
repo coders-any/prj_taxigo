@@ -5,8 +5,6 @@
                 <label>Lựa chọn điểm (*)</label>
                 <div class="input text">
                     <select class="form-control" name="place_start" required>
-                        <option value="1">Hà Nội</option>
-                        <option value="2">Sân bay nội bài</option>
                         <?php
                         if(!empty($listCity['City'])){
                             foreach ($listCity['City'] as $city){
@@ -23,7 +21,6 @@
                 <label>Lựa chọn điểm (*)</label>
                 <div class="input text">
                     <select class="form-control" name="place_end" required>
-                        <option value="2">Sân bay nội bài</option>
                         <?php
                         if(!empty($listCity['City'])){
                             foreach ($listCity['City'] as $city){

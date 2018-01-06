@@ -30,7 +30,7 @@ function CheckAuthentication()
 	// user logs in your system. To be able to use session variables don't
 	// forget to add session_start() at the top of this file.
 
-	return true;
+	return True;
 }
 
 // LicenseKey : Paste your license key here. If left blank, CKFinder will be
@@ -38,7 +38,6 @@ function CheckAuthentication()
 $config['LicenseName'] = '';
 $config['LicenseKey'] = '';
 
-$baseUrl = 'img/';
 /*
  Uncomment lines below to enable PHP error reporting and displaying PHP errors.
  Do not do this on a production server. Might be helpful when debugging why CKFinder does not work as expected.
@@ -61,7 +60,7 @@ Examples:
 
 ATTENTION: The trailing slash is required.
 */
-//$baseUrl = '/ckfinder/userfiles/';
+$baseUrl = 'http://prj_taxigo.loc:8080/img/';
 
 /*
 $baseDir : the path to the local directory (in the server) which points to the
