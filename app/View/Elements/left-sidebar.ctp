@@ -37,6 +37,27 @@
                 </ul>
             </li>
             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    <span>Quản lý tin tức</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/notices/list_notice">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Danh sách tin tức</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/catnotices/list_cat_notice">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Chuyên mục tin tức</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
                 <a href="/cartypeprices/list_car_type_price">
                     <i class="fa fa-angle-double-right"></i>
                     <span>Cài đặt giá theo km</span>
