@@ -83,29 +83,57 @@ class LongWaysController extends AppController
                     $car_price5 = $this->CarTypePrice->find('first',array('conditions'=>array('CarTypePrice.type'=>1)));
                     $car_price7 = $this->CarTypePrice->find('first',array('conditions'=>array('CarTypePrice.type'=>2)));
                     $car_price16 = $this->CarTypePrice->find('first',array('conditions'=>array('CarTypePrice.type'=>3)));
+                    $car_discount = $this->CarTypePrice->find('first',array('conditions'=>array('CarTypePrice.type'=>4)));
+                    if($this->request->data['is_car_discount'] ==0){
+                        if($km >0 && $km <=30){
+                            $price_seat_number_5 = $km * $car_price5['CarTypePrice']['distance1'];
+                            $price_seat_number_7 = $km * $car_price7['CarTypePrice']['distance1'];
+                            $price_seat_number_16 = $km * $car_price16['CarTypePrice']['distance1'];
+                            $price_car_discount = 0;
+                        }else if($km >=31 && $km <=60){
+                            $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + ($km-30) * $car_price5['CarTypePrice']['distance2'];
+                            $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + ($km-30) * $car_price7['CarTypePrice']['distance2'];
+                            $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + ($km-30) * $car_price16['CarTypePrice']['distance2'];
+                            $price_car_discount = 0;
+                        }else if($km >=61 && $km <=80){
+                            $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + 30 * $car_price5['CarTypePrice']['distance2'] + ($km-60) * $car_price5['CarTypePrice']['distance3'];
+                            $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + 30 * $car_price7['CarTypePrice']['distance2'] + ($km-60) * $car_price7['CarTypePrice']['distance3'];
+                            $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + 30 * $car_price16['CarTypePrice']['distance2'] + ($km-60) * $car_price16['CarTypePrice']['distance3'];
+                            $price_car_discount = 0;
+                        }else if($km >=81){
+                            $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + 30 * $car_price5['CarTypePrice']['distance2'] + 20 * $car_price5['CarTypePrice']['distance3']+ ($km-80) * $car_price5['CarTypePrice']['distance4'];
+                            $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + 30 * $car_price7['CarTypePrice']['distance2'] + 20 * $car_price7['CarTypePrice']['distance3']+ ($km-80) * $car_price7['CarTypePrice']['distance4'];
+                            $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + 30 * $car_price16['CarTypePrice']['distance2'] + 20 * $car_price16['CarTypePrice']['distance3']+ ($km-80) * $car_price16['CarTypePrice']['distance4'];
+                            $price_car_discount = 0;
+                        }
+                    }else if($this->request->data['is_car_discount'] ==1){
+                        if($km >0 && $km <=30){
+                            $price_seat_number_5 = 0;
+                            $price_seat_number_7 = 0;
+                            $price_seat_number_16 = 0;
+                            $price_car_discount = $km * $car_discount['CarTypePrice']['distance1'];
+                        }else if($km >=31 && $km <=60){
+                            $price_seat_number_5 = 0;
+                            $price_seat_number_7 = 0;
+                            $price_seat_number_16 = 0;
+                            $price_car_discount = 30*$car_discount['CarTypePrice']['distance1'] + ($km-30) * $car_discount['CarTypePrice']['distance2'];
 
-                    if($km >0 && $km <=30){
-                        $price_seat_number_5 = $km * $car_price5['CarTypePrice']['distance1'];
-                        $price_seat_number_7 = $km * $car_price7['CarTypePrice']['distance1'];
-                        $price_seat_number_16 = $km * $car_price16['CarTypePrice']['distance1'];
-                    }else if($km >=31 && $km <=60){
-                        $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + ($km-30) * $car_price5['CarTypePrice']['distance2'];
-                        $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + ($km-30) * $car_price7['CarTypePrice']['distance2'];
-                        $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + ($km-30) * $car_price16['CarTypePrice']['distance2'];
+                        }else if($km >=61 && $km <=80){
+                            $price_seat_number_5 = 0;
+                            $price_seat_number_7 = 0;
+                            $price_seat_number_16 = 0;
+                            $price_car_discount = 30*$car_discount['CarTypePrice']['distance1'] + 30 * $car_discount['CarTypePrice']['distance2'] + ($km-60) * $car_discount['CarTypePrice']['distance3'];
 
-                    }else if($km >=61 && $km <=80){
-                        $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + 30 * $car_price5['CarTypePrice']['distance2'] + ($km-60) * $car_price5['CarTypePrice']['distance3'];
-                        $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + 30 * $car_price7['CarTypePrice']['distance2'] + ($km-60) * $car_price7['CarTypePrice']['distance3'];
-                        $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + 30 * $car_price16['CarTypePrice']['distance2'] + ($km-60) * $car_price16['CarTypePrice']['distance3'];
-
-                    }else if($km >=81){
-                        $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + 30 * $car_price5['CarTypePrice']['distance2'] + 20 * $car_price5['CarTypePrice']['distance3']+ ($km-80) * $car_price5['CarTypePrice']['distance4'];
-                        $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + 30 * $car_price7['CarTypePrice']['distance2'] + 20 * $car_price7['CarTypePrice']['distance3']+ ($km-80) * $car_price7['CarTypePrice']['distance4'];
-                        $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + 30 * $car_price16['CarTypePrice']['distance2'] + 20 * $car_price16['CarTypePrice']['distance3']+ ($km-80) * $car_price16['CarTypePrice']['distance4'];
-
+                        }else if($km >=81){
+                            $price_seat_number_5 = 0;
+                            $price_seat_number_7 = 0;
+                            $price_seat_number_16 = 0;
+                            $price_car_discount = 30*$car_discount['CarTypePrice']['distance1'] + 30 * $car_discount['CarTypePrice']['distance2'] + 20 * $car_discount['CarTypePrice']['distance3']+ ($km-80) * $car_discount['CarTypePrice']['distance4'];
+                        }
                     }
+
                     //Road Price
-                    $data_road_prices = $this->RoadPrice->getRoadPrice(4,1);
+                    $data_road_prices = $this->RoadPrice->getRoadPrice($city_start,$city_end);
                     if(!empty($data_road_prices)){
                         $road_prices = $data_road_prices['RoadPrice']['price'];
                     }else{
@@ -120,11 +148,13 @@ class LongWaysController extends AppController
                             'place_start_name'=>$this->request->data['place_start'],
                             'place_end_name'=>$this->request->data['place_end'],
                             'image'=>$this->request->data['image'],
+                            'is_car_discount'=>$this->request->data['is_car_discount'],
                             'km'=>$km,
                             'road_prices'=>$road_prices,
                             'price_seat_number_5'=>$price_seat_number_5,
                             'price_seat_number_7'=>$price_seat_number_7,
                             'price_seat_number_16'=>$price_seat_number_16,
+                            'price_car_discount'=>$price_car_discount,
                             'content'=>$this->request->data['content'],
                             'tag'=>$this->request->data['tag'],
                         )
@@ -237,29 +267,57 @@ class LongWaysController extends AppController
                     $car_price5 = $this->CarTypePrice->find('first',array('conditions'=>array('CarTypePrice.type'=>1)));
                     $car_price7 = $this->CarTypePrice->find('first',array('conditions'=>array('CarTypePrice.type'=>2)));
                     $car_price16 = $this->CarTypePrice->find('first',array('conditions'=>array('CarTypePrice.type'=>3)));
+                    $car_discount = $this->CarTypePrice->find('first',array('conditions'=>array('CarTypePrice.type'=>4)));
 
-                    if($km >0 && $km <=30){
-                        $price_seat_number_5 = $km * $car_price5['CarTypePrice']['distance1'];
-                        $price_seat_number_7 = $km * $car_price7['CarTypePrice']['distance1'];
-                        $price_seat_number_16 = $km * $car_price16['CarTypePrice']['distance1'];
-                    }else if($km >=31 && $km <=60){
-                        $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + ($km-30) * $car_price5['CarTypePrice']['distance2'];
-                        $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + ($km-30) * $car_price7['CarTypePrice']['distance2'];
-                        $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + ($km-30) * $car_price16['CarTypePrice']['distance2'];
+                    if($this->request->data['is_car_discount'] == 0){
+                        if($km >0 && $km <=30){
+                            $price_seat_number_5 = $km * $car_price5['CarTypePrice']['distance1'];
+                            $price_seat_number_7 = $km * $car_price7['CarTypePrice']['distance1'];
+                            $price_seat_number_16 = $km * $car_price16['CarTypePrice']['distance1'];
+                            $price_car_discount = 0;
+                        }else if($km >=31 && $km <=60){
+                            $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + ($km-30) * $car_price5['CarTypePrice']['distance2'];
+                            $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + ($km-30) * $car_price7['CarTypePrice']['distance2'];
+                            $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + ($km-30) * $car_price16['CarTypePrice']['distance2'];
+                            $price_car_discount = 0;
+                        }else if($km >=61 && $km <=80){
+                            $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + 30 * $car_price5['CarTypePrice']['distance2'] + ($km-60) * $car_price5['CarTypePrice']['distance3'];
+                            $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + 30 * $car_price7['CarTypePrice']['distance2'] + ($km-60) * $car_price7['CarTypePrice']['distance3'];
+                            $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + 30 * $car_price16['CarTypePrice']['distance2'] + ($km-60) * $car_price16['CarTypePrice']['distance3'];
+                            $price_car_discount = 0;
+                        }else if($km >=81){
+                            $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + 30 * $car_price5['CarTypePrice']['distance2'] + 20 * $car_price5['CarTypePrice']['distance3']+ ($km-80) * $car_price5['CarTypePrice']['distance4'];
+                            $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + 30 * $car_price7['CarTypePrice']['distance2'] + 20 * $car_price7['CarTypePrice']['distance3']+ ($km-80) * $car_price7['CarTypePrice']['distance4'];
+                            $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + 30 * $car_price16['CarTypePrice']['distance2'] + 20 * $car_price16['CarTypePrice']['distance3']+ ($km-80) * $car_price16['CarTypePrice']['distance4'];
+                            $price_car_discount = 0;
+                        }
+                    }else if($this->request->data['is_car_discount'] == 1){
+                        if($km >0 && $km <=30){
+                            $price_seat_number_5 = 0;
+                            $price_seat_number_7 = 0;
+                            $price_seat_number_16 = 0;
+                            $price_car_discount = $km * $car_discount['CarTypePrice']['distance1'];
+                        }else if($km >=31 && $km <=60){
+                            $price_seat_number_5 = 0;
+                            $price_seat_number_7 = 0;
+                            $price_seat_number_16 = 0;
+                            $price_car_discount = 30*$car_discount['CarTypePrice']['distance1'] + ($km-30) * $car_discount['CarTypePrice']['distance2'];
 
-                    }else if($km >=61 && $km <=80){
-                        $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + 30 * $car_price5['CarTypePrice']['distance2'] + ($km-60) * $car_price5['CarTypePrice']['distance3'];
-                        $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + 30 * $car_price7['CarTypePrice']['distance2'] + ($km-60) * $car_price7['CarTypePrice']['distance3'];
-                        $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + 30 * $car_price16['CarTypePrice']['distance2'] + ($km-60) * $car_price16['CarTypePrice']['distance3'];
+                        }else if($km >=61 && $km <=80){
+                            $price_seat_number_5 = 0;
+                            $price_seat_number_7 = 0;
+                            $price_seat_number_16 = 0;
+                            $price_car_discount = 30*$car_discount['CarTypePrice']['distance1'] + 30 * $car_discount['CarTypePrice']['distance2'] + ($km-60) * $car_discount['CarTypePrice']['distance3'];
 
-                    }else if($km >=81){
-                        $price_seat_number_5 = 30*$car_price5['CarTypePrice']['distance1'] + 30 * $car_price5['CarTypePrice']['distance2'] + 20 * $car_price5['CarTypePrice']['distance3']+ ($km-80) * $car_price5['CarTypePrice']['distance4'];
-                        $price_seat_number_7 = 30*$car_price7['CarTypePrice']['distance1'] + 30 * $car_price7['CarTypePrice']['distance2'] + 20 * $car_price7['CarTypePrice']['distance3']+ ($km-80) * $car_price7['CarTypePrice']['distance4'];
-                        $price_seat_number_16 = 30*$car_price16['CarTypePrice']['distance1'] + 30 * $car_price16['CarTypePrice']['distance2'] + 20 * $car_price16['CarTypePrice']['distance3']+ ($km-80) * $car_price16['CarTypePrice']['distance4'];
-
+                        }else if($km >=81){
+                            $price_seat_number_5 = 0;
+                            $price_seat_number_7 = 0;
+                            $price_seat_number_16 = 0;
+                            $price_car_discount = 30*$car_discount['CarTypePrice']['distance1'] + 30 * $car_discount['CarTypePrice']['distance2'] + 20 * $car_discount['CarTypePrice']['distance3']+ ($km-80) * $car_discount['CarTypePrice']['distance4'];
+                        }
                     }
                     //Road Price
-                    $data_road_prices = $this->RoadPrice->getRoadPrice(4,1);
+                    $data_road_prices = $this->RoadPrice->getRoadPrice($city_start,$city_end);
                     if(!empty($data_road_prices)){
                         $road_prices = $data_road_prices['RoadPrice']['price'];
                     }else{
@@ -275,11 +333,13 @@ class LongWaysController extends AppController
                             'place_start_name'=>$this->request->data['place_start'],
                             'place_end_name'=>$this->request->data['place_end'],
                             'image'=>$this->request->data['image'],
+                            'is_car_discount'=>$this->request->data['is_car_discount'],
                             'km'=>$km,
                             'road_prices'=>$road_prices,
                             'price_seat_number_5'=>$price_seat_number_5,
                             'price_seat_number_7'=>$price_seat_number_7,
                             'price_seat_number_16'=>$price_seat_number_16,
+                            'price_car_discount'=>$price_car_discount,
                             'content'=>$this->request->data['content'],
                             'tag'=>$this->request->data['tag'],
                         )

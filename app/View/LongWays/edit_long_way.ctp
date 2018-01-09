@@ -42,8 +42,15 @@
                         <input type="button" value="Upload" onclick="BrowseServer();" style="float: left"/>
                     </div>
                 </div>
+                <div class="clearfix"></div><br>
+                <div class="form-group">
+                    <label>Có phải xe tiện chuyến (*)</label>
+                    <div class="input text required">
+                        <input name="is_car_discount" type="radio"  <?php if(isset($data['LongWay']['is_car_discount']) && $data['LongWay']['is_car_discount'] == 1){echo "checked";}?> value="1"  > Đúng
+                        <input name="is_car_discount" type="radio"  <?php if(isset($data['LongWay']['is_car_discount']) && $data['LongWay']['is_car_discount'] == 0){echo "checked";}?> value="0" > Sai
+                    </div>
+                </div>
                 <div class="clearfix"></div>
-
             </div>
             <div class="col-xs-6 col-md-6">
                 <div class="form-group">
@@ -72,6 +79,9 @@
                         <input  class="form-control" type="text" value="<?php if(isset($data['LongWay']['road_prices'])) {echo number_format($data['LongWay']['road_prices']).'đ';}?>" readonly>
                     </div>
                 </div>
+                <?php
+                if(isset($data['LongWay']['is_car_discount']) && $data['LongWay']['is_car_discount'] == 0){
+                ?>
                 <div class="form-group" style="width: 20%;float:left;">
                     <label>Giá xe 5 chỗ</label>
                     <div class="input text required">
@@ -90,6 +100,14 @@
                         <input  class="form-control" type="text" value="<?php if(isset($data['LongWay']['price_seat_number_16'])) {echo number_format($data['LongWay']['price_seat_number_16']).'đ';}?>" readonly>
                     </div>
                 </div>
+                <?php }else if(isset($data['LongWay']['is_car_discount']) && $data['LongWay']['is_car_discount']){?>
+                    <div class="form-group" style="width: 20%;float:left;">
+                        <label>Giá xe tiện chuyến</label>
+                        <div class="input text required">
+                            <input  class="form-control" type="text" value="<?php if(isset($data['LongWay']['price_car_discount'])) {echo number_format($data['LongWay']['price_car_discount']).'đ';}?>" readonly>
+                        </div>
+                    </div>
+                <?php }?>
 
             </div>
             <div class="col-md-12 col-xs-12">

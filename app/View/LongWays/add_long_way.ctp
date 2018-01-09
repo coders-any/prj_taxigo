@@ -33,12 +33,12 @@
                         <input name="tag" class="form-control" type="text"  value="">
                     </div>
                 </div>
-                <div class="clearfix"></div>
+
                 <div class="form-group">
-                    <label>Ảnh minh họa (*)</label>
+                    <label>Có phải xe tiện chuyến (*)</label>
                     <div class="input text required">
-                        <input name="image" type="text"  value="" id="Image" style="width: 50%;float: left">
-                        <input type="button" value="Upload" onclick="BrowseServer();" style="float: left"/>
+                        <input name="is_car_discount" type="radio"  value="1"  > Đúng
+                        <input name="is_car_discount" type="radio"  value="0" checked > Sai
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -59,6 +59,15 @@
                     </div>
                 </div>
 
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label>Ảnh minh họa (*)</label>
+                    <div class="input text required">
+                        <input name="image" type="text"  value="" id="Image" style="width: 50%;float: left">
+                        <input type="button" value="Upload" onclick="BrowseServer();" style="float: left"/>
+                    </div>
+                </div>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-12 col-xs-12">

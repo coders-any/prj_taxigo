@@ -49,13 +49,15 @@
                         <?php
                         if(!empty($cat_notice_data)){
                             foreach ($cat_notice_data as $cat){
+                                $checked ='';
                                 foreach ($data['CatNoticeNotice'] as $cat_notice) {
+                                    var_dump($cat_notice['cat_notice_id']);
+                                    var_dump($cat['CatNotice']['id']);die;
                                     if($cat_notice['cat_notice_id'] === $cat['CatNotice']['id']){
-                                        echo '<input type="checkbox" name="cat_notice_id[]"  required="required" checked="checked" value="'.$cat['CatNotice']['id'].'"> '.$cat['CatNotice']['name'].' ';
-                                    }else{
-                                        echo '<input type="checkbox" name="cat_notice_id[]"  required="required" value="'.$cat['CatNotice']['id'].'"> '.$cat['CatNotice']['name'].' ';
+                                        $checked = 'checked';
                                     }
                                 }
+                                echo '<input type="checkbox" name="cat_notice_id[]"  required="required" checked="'.$checked.'" value="'.$cat['CatNotice']['id'].'"> '.$cat['CatNotice']['name'].' ';
                             }
                         }
                         ?>

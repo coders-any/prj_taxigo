@@ -25,7 +25,8 @@ class CommonComponent extends Component
         curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 90);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 2500);
+//        curl_setopt($ch, CURLOPT_TIMEOUT, 90);
         $response = curl_exec($ch);
         curl_close($ch);
         $response_a = json_decode($response);
@@ -53,11 +54,12 @@ class CommonComponent extends Component
         curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 90);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 2500);
+//        curl_setopt($ch, CURLOPT_TIMEOUT, 90);
         $response = curl_exec($ch);
         curl_close($ch);
         $response_a = json_decode($response, true);
-        if($response_a['status']=='OK'){
+        if($response_a['rows'][0]['elements'][0]['status']=='OK'){
             $dist = $response_a['rows'][0]['elements'][0]['distance']['text'];
             $time = $response_a['rows'][0]['elements'][0]['duration']['text'];
             return array('km' => $dist, 'time' => $time);
@@ -72,6 +74,7 @@ class CommonComponent extends Component
                 '1'=>array('id'=>1,'name'=>'Xe 5 chỗ'),
                 '2'=>array('id'=>2,'name'=>'Xe 7 chỗ'),
                 '3'=>array('id'=>3,'name'=>'Xe 16 chỗ'),
+                '4'=>array('id'=>4,'name'=>'Xe tiện chuyến'),
             )
         );
         return $data;
